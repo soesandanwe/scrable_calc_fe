@@ -1,0 +1,23 @@
+:host {
+    width: 80%;
+}
+.table {
+    width: 100%;
+    border-spacing: 0;
+    margin: 0;
+    tr td {
+        border: 1px solid;
+    }
+}
+
+.score-display {
+    margin-left:1em;
+    margin-top: 3em;
+    margin-bottom: 3em;
+}
+
+.btn {
+    margin-left: 1em;
+    margin-right: 1em;
+    height: 38px;
+}
