@@ -1,1 +1,13 @@
-<p>letter-box works!</p>
+ <input 
+    class="form-control"
+   [id]="elementId" 
+   type="text"  
+   [readonly]="isReadOnly" 
+   [value]="value" 
+   maxlength="1"
+   (keyup)="onTextKeyUp($event)"
+   appOneCharacterOnly />
+
+
+
+
