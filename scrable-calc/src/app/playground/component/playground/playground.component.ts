@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Letter } from './model/letter';
-import { HttpClient } from '@angular/common/http';
-import { PlaygroundService } from './service/playground.service';
+import { PlaygroundService } from '../../service/playground.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { PlayGround } from './model/playground';
+import { PlayGround } from '../../model/playground';
+import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -23,7 +22,8 @@ export class PlaygroundComponent implements OnInit {
 
   constructor(
     private playgroundService: PlaygroundService, 
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private router: Router
   ) { 
     this.model = PlayGround.createEmptyModel();
     this.playGroundFormGroup = this.formBuilder.group({
@@ -44,68 +44,47 @@ export class PlaygroundComponent implements OnInit {
   ngOnInit(): void {
 
     this.playGroundFormGroup.controls['letter1'].valueChanges.subscribe(letter => {
-     
-        this.calculateScore(this.playGroundFormGroup.value['letter1'], letter,1);
-     
+      this.calculateScore(this.playGroundFormGroup.value['letter1'], letter,1);
     });
 
     this.playGroundFormGroup.controls['letter2'].valueChanges.subscribe(letter => {
-      
-        this.calculateScore(this.playGroundFormGroup.value['letter2'], letter,2);
-    
+      this.calculateScore(this.playGroundFormGroup.value['letter2'], letter,2);
     });
 
     this.playGroundFormGroup.controls['letter3'].valueChanges.subscribe(letter => {
-    
-        this.calculateScore(this.playGroundFormGroup.value['letter3'], letter,3);
-      
+      this.calculateScore(this.playGroundFormGroup.value['letter3'], letter,3);
     });
 
     this.playGroundFormGroup.controls['letter4'].valueChanges.subscribe(letter => {
-     
-        this.calculateScore(this.playGroundFormGroup.value['letter4'], letter,4);
-    
+      this.calculateScore(this.playGroundFormGroup.value['letter4'], letter,4);
     });
 
     this.playGroundFormGroup.controls['letter5'].valueChanges.subscribe(letter => {
-    
-        this.calculateScore(this.playGroundFormGroup.value['letter5'], letter,5);
-      
+      this.calculateScore(this.playGroundFormGroup.value['letter5'], letter,5);
     });
 
     this.playGroundFormGroup.controls['letter6'].valueChanges.subscribe(letter => {
-     
-        this.calculateScore(this.playGroundFormGroup.value['letter6'], letter,6);
-      
+      this.calculateScore(this.playGroundFormGroup.value['letter6'], letter,6);
     });
 
 
     this.playGroundFormGroup.controls['letter7'].valueChanges.subscribe(letter => {
-      
-        this.calculateScore(this.playGroundFormGroup.value['letter7'], letter,7);
-      
+      this.calculateScore(this.playGroundFormGroup.value['letter7'], letter,7);
     });
 
     this.playGroundFormGroup.controls['letter8'].valueChanges.subscribe(letter => {
-     
-        this.calculateScore(this.playGroundFormGroup.value['letter8'], letter,8);
-      
+      this.calculateScore(this.playGroundFormGroup.value['letter8'], letter,8);
     });
 
     this.playGroundFormGroup.controls['letter9'].valueChanges.subscribe(letter => {
-    
-        this.calculateScore(this.playGroundFormGroup.value['letter9'], letter,9);
-     
+      this.calculateScore(this.playGroundFormGroup.value['letter9'], letter,9);
     });
 
     this.playGroundFormGroup.controls['letter10'].valueChanges.subscribe(letter => {
-    
-        this.calculateScore(this.playGroundFormGroup.value['letter10'], letter,10);
-     
+      this.calculateScore(this.playGroundFormGroup.value['letter10'], letter,10);
     });
     
   }
-
 
   calculateScore(oldValue: string, newValue: string, controlNo: number) {
 
@@ -126,14 +105,36 @@ export class PlaygroundComponent implements OnInit {
       this.controlNo = controlNo
     }
     this.totalScore += newValueAmount;
-    console.log(this.totalScore);
   }
 
   public letterPoints (): any {
     this.playgroundService.getLetterPoints().subscribe((item) => {
       this.letterMap = item;
-      
     });
   }  
+
+  resetTiles() {
+    this.playGroundFormGroup.reset();
+  }
+
+  saveScore() {
+    if(this.totalScore && this.totalScore > 0) {
+      const data = {
+        ... this.playGroundFormGroup.getRawValue(),
+        score: this.totalScore
+      };
+
+      this.playgroundService.saveScore(data).subscribe((result) => {
+        this.playGroundFormGroup.reset();
+      }, (error) => {
+        // this.toastShow = true;
+        // this.toastMessage = "Fail submission."
+      });
+    } 
+  }
+
+  viewTopScore() {
+    this.router.navigate(["/viewTopScore/"]);
+  }
 
 }

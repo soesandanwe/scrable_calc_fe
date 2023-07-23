@@ -14,8 +14,16 @@ export class PlaygroundService {
      
    }
 
-   getLetterPoints() : Observable<any> {
+  getLetterPoints() : Observable<any> {
     return this.http.get(`${url}/letter/findAll`);
+  }
+
+  saveScore(data: any) : Observable<any> {
+    return this.http.post(`${url}/score/save`, data);
+  }
+
+  viewTopScore() : Observable<any> {
+    return this.http.get(`${url}/score/viewTopScore`);
   }
 
 }

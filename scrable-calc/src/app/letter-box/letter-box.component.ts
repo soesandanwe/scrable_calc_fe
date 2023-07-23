@@ -51,7 +51,7 @@ export class LetterBoxComponent implements OnInit, ControlValueAccessor {
   onBlur($event: any) : void {
     this.onTouched();
     this.value = $event.target.value;
-    if(!this.value) this.propagateChange(null);
+    if(!this.value) this.propagateChange(this.value);
   }
 
 }
