@@ -18,7 +18,6 @@ export class OneCharacterOnlyDirective {
   }
 
   @HostListener('paste', ['$event']) blockPaste(event: KeyboardEvent) {
-    alert("c");
     this.validateFields(event);
   }
 

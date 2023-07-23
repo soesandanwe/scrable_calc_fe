@@ -1,41 +1,41 @@
-<form>
+<form [formGroup]="playGroundFormGroup">
     <div>
         <table class="table table-bordered">
             <tr>
                 <td>
-                    <app-letter-box ></app-letter-box>
+                    <app-letter-box formControlName="letter1"></app-letter-box>
                 </td>
                 <td>
-                    <app-letter-box></app-letter-box>
+                    <app-letter-box formControlName="letter2"></app-letter-box>
                 </td>
                 <td>
-                    <app-letter-box></app-letter-box>
+                    <app-letter-box formControlName="letter3"></app-letter-box>
                 </td>
                 <td>
-                    <app-letter-box></app-letter-box>
+                    <app-letter-box formControlName="letter4"></app-letter-box>
                 </td>
                 <td>
-                    <app-letter-box></app-letter-box>
+                    <app-letter-box formControlName="letter5"></app-letter-box>
                 </td>
                 <td>
-                    <app-letter-box></app-letter-box>
+                    <app-letter-box formControlName="letter6"></app-letter-box>
                 </td>
                 <td>
-                    <app-letter-box></app-letter-box>
+                    <app-letter-box formControlName="letter7"></app-letter-box>
                 </td>
                 <td>
-                    <app-letter-box></app-letter-box>
+                    <app-letter-box formControlName="letter8"></app-letter-box>
                 </td>
                 <td>
-                    <app-letter-box></app-letter-box>
+                    <app-letter-box formControlName="letter9"></app-letter-box>
                 </td>
                 <td>
-                    <app-letter-box></app-letter-box>
+                    <app-letter-box formControlName="letter10"></app-letter-box>
                 </td>
             </tr>
         </table>
         <div class="score-display">
-        Score : 
+        Score : {{totalScore}}
         </div>
         
         <button type="button" class="btn btn-primary">Reset Tiles</button>

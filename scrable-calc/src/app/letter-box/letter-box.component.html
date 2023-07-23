@@ -5,7 +5,8 @@
    [readonly]="isReadOnly" 
    [value]="value" 
    maxlength="1"
-   (keyup)="onTextKeyUp($event)"
+   (blur)="onBlur($event)"
+   (change)="onChange($event)"
    appOneCharacterOnly />
 
 

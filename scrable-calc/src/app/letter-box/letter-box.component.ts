@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, forwardRef } from '@angular/core';
+import { Component, Input, OnInit, SimpleChanges, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
@@ -18,28 +18,40 @@ export class LetterBoxComponent implements OnInit, ControlValueAccessor {
   @Input() elementId: string= "";
   @Input() value: string = "";
   @Input() isReadOnly: boolean = false;
-  
+ 
   constructor() { }
   propagateChange=(_:any) => {};
   writeValue(obj: any): void {
-    throw new Error('Method not implemented.');
+    this.value = obj;
   }
   registerOnChange(fn: any): void {
-    throw new Error('Method not implemented.');
+    this.propagateChange = fn;
   }
   registerOnTouched(fn: any): void {
-    throw new Error('Method not implemented.');
+    this.onTouched = fn;
   }
-  setDisabledState?(isDisabled: boolean): void {
-    throw new Error('Method not implemented.');
-  }
+  
+  onTouched = () => {};
 
   ngOnInit(): void {
   }
 
-  onTextKeyUp($event: any) : void{
+  ngOnChanges(changes:SimpleChanges) : void {
+    const {value} = changes;
+    if(value && value.currentValue !== value.previousValue) {
+      this.value = value.currentValue
+    };
+  }
+
+  onChange($event: any) : void{
     this.value=$event.target.value;
     this.propagateChange(this.value);
+  }
+
+  onBlur($event: any) : void {
+    this.onTouched();
+    this.value = $event.target.value;
+    if(!this.value) this.propagateChange(null);
   }
 
 }
