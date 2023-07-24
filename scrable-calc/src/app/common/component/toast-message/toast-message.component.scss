@@ -1,0 +1,16 @@
+.toast {
+    left: 50%;
+    position: fixed;
+    transform: translate(-50%, 0px);
+    top: 100px;
+    z-index: 9999;
+    color: rgb(20, 20, 20);
+}
+
+.bg-success {
+    background: rgb(200, 246, 191) !important;
+}  
+
+.bg-danger {
+    background: rgb(247, 209, 199) !important;
+}  

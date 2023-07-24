@@ -2,4 +2,12 @@
     width: 100%;
     height: 100%;
     box-sizing: border-box;
+    border-color: #684603;
+    border-radius: 0;
+    box-shadow:  #ccc;
 }
+
+.form-control:focus {
+    border-color: #ffaa0048;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 119, 0, 0.669);
+  }

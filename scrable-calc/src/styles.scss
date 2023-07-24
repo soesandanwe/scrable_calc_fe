@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+$primaryColor: rgb(100, 55, 4);       
+$secondaryColor: rgb(91, 97, 1);       
+$theme-colors: (
+    primary: $primaryColor,
+    secondary:$secondaryColor
+);
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+
+@import '~ngx-toastr/toastr';
+
+

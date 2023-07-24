@@ -3,34 +3,34 @@
         <table class="table table-bordered">
             <tr>
                 <td>
-                    <app-letter-box formControlName="letter1"></app-letter-box>
+                    <app-letter-box formControlName="letter1" class="letter-box"></app-letter-box>
                 </td>
                 <td>
-                    <app-letter-box formControlName="letter2"></app-letter-box>
+                    <app-letter-box formControlName="letter2" class="letter-box"></app-letter-box>
                 </td>
                 <td>
-                    <app-letter-box formControlName="letter3"></app-letter-box>
+                    <app-letter-box formControlName="letter3" class="letter-box"></app-letter-box>
                 </td>
                 <td>
-                    <app-letter-box formControlName="letter4"></app-letter-box>
+                    <app-letter-box formControlName="letter4" class="letter-box"></app-letter-box>
                 </td>
                 <td>
-                    <app-letter-box formControlName="letter5"></app-letter-box>
+                    <app-letter-box formControlName="letter5" class="letter-box"></app-letter-box>
                 </td>
                 <td>
-                    <app-letter-box formControlName="letter6"></app-letter-box>
+                    <app-letter-box formControlName="letter6" class="letter-box"></app-letter-box>
                 </td>
                 <td>
-                    <app-letter-box formControlName="letter7"></app-letter-box>
+                    <app-letter-box formControlName="letter7" class="letter-box"></app-letter-box>
                 </td>
                 <td>
-                    <app-letter-box formControlName="letter8"></app-letter-box>
+                    <app-letter-box formControlName="letter8" class="letter-box"></app-letter-box>
                 </td>
                 <td>
-                    <app-letter-box formControlName="letter9"></app-letter-box>
+                    <app-letter-box formControlName="letter9" class="letter-box"></app-letter-box>
                 </td>
                 <td>
-                    <app-letter-box formControlName="letter10"></app-letter-box>
+                    <app-letter-box formControlName="letter10" class="letter-box"></app-letter-box>
                 </td>
             </tr>
         </table>
@@ -38,12 +38,13 @@
         Score : {{totalScore}}
         </div>
         
-        <button type="button" class="btn btn-primary" (click)="resetTiles()">Reset Tiles</button>
+        <button type="button" class="btn btn-outline-secondary" (click)="resetTiles()">Reset Tiles</button>
     
-        <button type="button" class="btn btn-secondary" (click)="saveScore()">Save Score</button>
+        <button type="button" class="btn btn-primary" (click)="saveScore()" [disabled]="this.disableSaveScore()">Save Score</button>
     
-        <button type="button" class="btn btn-outline-secondary" (click)="viewTopScore()">View Top Scores</button>
+        <button type="button" class="btn btn-secondary" (click)="viewTopScore()">View Top Scores</button>
         
     </div>
+    <app-toast-message></app-toast-message>
+   
 </form>
-

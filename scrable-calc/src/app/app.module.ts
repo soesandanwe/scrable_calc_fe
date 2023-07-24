@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,6 +9,8 @@ import { OneCharacterOnlyDirective } from './common/one-character-only.directive
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PlaygroundComponent } from './playground/component/playground/playground.component';
 import { ScoreCardComponent } from './playground/component/score-card/score-card.component';
+import { ToastrModule } from 'ngx-toastr';
+import { ToastMessageComponent } from './common/component/toast-message/toast-message.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,8 @@ import { ScoreCardComponent } from './playground/component/score-card/score-card
     PlaygroundComponent,
     LetterBoxComponent,
     OneCharacterOnlyDirective,
-    ScoreCardComponent
+    ScoreCardComponent,
+    ToastMessageComponent
   ],
   imports: [
     BrowserModule,
@@ -24,10 +27,13 @@ import { ScoreCardComponent } from './playground/component/score-card/score-card
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbTooltipModule,
   ],
   
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
